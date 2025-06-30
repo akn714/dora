@@ -39,6 +39,8 @@ def get_prompt():
     prompt = input('>>> ').strip()
     return prompt
 
+print(greet)
+
 llm = GroqAI()
 
 messages = [
@@ -50,11 +52,9 @@ messages = [
     }
 ]
 
-print(greet)
-
 while True:
     prompt = get_prompt()
-    if prompt=='exit': break
+    if prompt=='exit' or prompt=='bye': break
     messages.append({
         'role': 'user',
         'content': prompt
