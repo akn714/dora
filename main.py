@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from groq import Groq
+from colored import *
 
 load_dotenv()
 
@@ -60,5 +61,9 @@ while True:
         'content': prompt
     })
     res = llm.get_llm_response(messages)
-    print('>>>', res)
+    messages.append({
+        'role': 'assistant',
+        'content': res
+    })
+    cprint('>>>', res, RED)
 
