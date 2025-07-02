@@ -5,8 +5,8 @@ from colored import *
 
 load_dotenv()
 
-greet = """
- ________       ____     _______           __            ________        ____     _______          __                    
+INTRO_TEXT = """
+.________       ____     _______           __            ________        ____     _______          __                    
 |_   ___ `.   .'    `.  |_   __ \         /  \          |_   ___ `.    .'    `.  |_   __ \        /  \           _       
   | |   `. \ /  .--.  \   | |__) |       / /\ \           | |   `. \  /  .--.  \   | |__) |      / /\ \         | |      
   | |    | | | |    | |   |  __ /       / ____ \          | |    | |  | |    | |   |  __ /      / ____ \        | |      
@@ -40,7 +40,9 @@ def get_prompt():
     prompt = input('>>> ').strip()
     return prompt
 
-print(greet)
+def greet():
+    print(INTRO_TEXT)
+greet()
 
 llm = GroqAI()
 
@@ -49,21 +51,26 @@ messages = [
         'role': 'system',
         'content': """
         You are an helpful assistant named mini-dora, that runs on a CLI. Your name comes from a character in doremon, the mini-doremon (3 mini versions of doremon).
+        You respond to users in a short and concise way, and you responses should be formated in a way that should be clearly visible on cli
         """
     }
 ]
 
 while True:
-    prompt = get_prompt()
-    if prompt=='exit' or prompt=='bye': break
-    messages.append({
-        'role': 'user',
-        'content': prompt
-    })
-    res = llm.get_llm_response(messages)
-    messages.append({
-        'role': 'assistant',
-        'content': res
-    })
-    cprint('>>>', res, RED)
+    try:
+        prompt = get_prompt()
+        if prompt=='exit' or prompt=='bye': break
+        if prompt=='clear': os.system('clear'); greet(); continue;
+        messages.append({
+            'role': 'user',
+            'content': prompt
+        })
+        res = llm.get_llm_response(messages)
+        messages.append({
+            'role': 'assistant',
+            'content': res
+        })
+        cprint('>>>', res, RED)
+    except Exception as e:
+        cprint('>>>', "Sorry I'm unable to response", RED)
 
