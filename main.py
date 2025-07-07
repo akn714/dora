@@ -72,5 +72,5 @@ while True:
         })
         cprint('>>>', res, RED)
     except Exception as e:
-        cprint('>>>', "Sorry I'm unable to response", RED)
+        cprint('>>>', "Sorry I'm unable to responsed", RED)
 
