@@ -1,7 +1,9 @@
 import os
 from dotenv import load_dotenv
 from groq import Groq
+
 from colored import *
+from get_input import get_input
 
 load_dotenv()
 
@@ -37,11 +39,27 @@ class GroqAI:
     pass
 
 def get_prompt():
-    prompt = input('>>> ').strip()
+    prompt = get_input('>>> ').strip()
     return prompt
+
+# def get_input(start_str):
+#     # print("Enter multiple lines (press Ctrl+D to finish):")
+#     print(start_str, end='')
+#     try:
+#         lines = []
+#         while True:
+#             line = input()
+#             lines.append(line)
+#     except EOFError:
+#         pass
+
+#     multi_line_string = '"""\n' + '\n'.join(lines) + '\n"""'
+#     return multi_line_string
+
 
 def greet():
     print(INTRO_TEXT)
+    print('[esc+enter]: submit the prompt | [enter]: enter a new line')
 greet()
 
 llm = GroqAI()
