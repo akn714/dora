@@ -42,21 +42,6 @@ def get_prompt():
     prompt = get_input('>>> ').strip()
     return prompt
 
-# def get_input(start_str):
-#     # print("Enter multiple lines (press Ctrl+D to finish):")
-#     print(start_str, end='')
-#     try:
-#         lines = []
-#         while True:
-#             line = input()
-#             lines.append(line)
-#     except EOFError:
-#         pass
-
-#     multi_line_string = '"""\n' + '\n'.join(lines) + '\n"""'
-#     return multi_line_string
-
-
 def greet():
     print(INTRO_TEXT)
     print('[esc+enter]: submit the prompt | [enter]: enter a new line')
@@ -77,8 +62,19 @@ messages = [
 while True:
     try:
         prompt = get_prompt()
-        if prompt=='exit' or prompt=='bye': break
-        if prompt=='clear': os.system('clear'); greet(); continue;
+
+        # check for commands
+        if prompt=='/clear': os.system('clear'); greet(); continue
+        if prompt=='/bye' or prompt=='/exit': break
+        if prompt=='/empty': messages = []; continue
+        if prompt=='/help':
+            cprint('>>>', "Available commands:", RED)
+            cprint('>>>', "/clear: clear the screen", RED)
+            cprint('>>>', "/bye: exit the program", RED)
+            cprint('>>>', "/empty: clear the messages", RED)
+            cprint('>>>', "/help: show this help message", RED)
+            continue
+
         messages.append({
             'role': 'user',
             'content': prompt
