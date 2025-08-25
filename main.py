@@ -39,8 +39,12 @@ class GroqAI:
     pass
 
 def get_prompt():
-    prompt = get_input('>>> ').strip()
-    return prompt
+	prompt = None
+	try:
+		prompt = get_input('>>> ').strip()
+	except KeyboardInterrupt as e:
+		cprint('>>>', "KeyboardInterrupt", RED)
+	return prompt
 
 def greet():
     print(INTRO_TEXT)
@@ -64,6 +68,7 @@ while True:
         prompt = get_prompt()
 
         # check for commands
+        if prompt==None: continue
         if prompt=='/clear': os.system('clear'); greet(); continue
         if prompt=='/bye' or prompt=='/exit': break
         if prompt=='/empty': messages = []; continue
