@@ -78,12 +78,16 @@ while True:
             """
         if prompt=='/clear': os.system('clear'); greet(); continue
         if prompt=='/bye' or prompt=='/exit': break
-        if prompt=='/empty': messages = []; continue
+        if prompt=='/empty':
+            messages = []
+            cprint('>>>', "Chat history cleared!!", RED)
+            continue
         if prompt=='/help':
             cprint('>>>', "Available commands:", RED)
+            cprint('>>>', "/screen: enable agent to see your screen", RED)
             cprint('>>>', "/clear: clear the screen", RED)
-            cprint('>>>', "/bye: exit the program", RED)
             cprint('>>>', "/empty: clear the messages", RED)
+            cprint('>>>', "/bye: exit the program", RED)
             cprint('>>>', "/help: show this help message", RED)
             continue
 
