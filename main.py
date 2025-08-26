@@ -4,6 +4,7 @@ from groq import Groq
 
 from colored import *
 from get_input import get_input
+from screen import get_screen_text
 
 load_dotenv()
 
@@ -69,6 +70,12 @@ while True:
 
         # check for commands
         if prompt==None: continue
+        if prompt.startswith('/screen'):
+            screen_text = get_screen_text()
+            prompt = f"""
+            screen data (ocr data): {screen_text}
+            query: {prompt[8:]}
+            """
         if prompt=='/clear': os.system('clear'); greet(); continue
         if prompt=='/bye' or prompt=='/exit': break
         if prompt=='/empty': messages = []; continue
