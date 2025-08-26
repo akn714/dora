@@ -1,5 +1,5 @@
-# Dora
-Meet 'Dora' a screen aware CLI agent.
+# NYX
+Meet 'NYX' a screen aware CLI agent.
 
 #### Features
 - Able to see your screen while chatting.
@@ -7,7 +7,7 @@ Meet 'Dora' a screen aware CLI agent.
 - Communicate through voice. (soon)
 
 #### Commands
-- /screen: enable the agnet to see the screen
+- /screen: enable the agnet to see the screen (usage -> '/screen hey, can you explain me the code on my screen)
 - /bye or /exit: exit chat
 - /clear: clear screen
 - /empty: clear chat history

@@ -8,14 +8,21 @@ from screen import get_screen_text
 
 load_dotenv()
 
+# INTRO_TEXT = """
+# .________       ____     _______           __            ________        ____     _______          __                    
+# |_   ___ `.   .'    `.  |_   __ \         /  \          |_   ___ `.    .'    `.  |_   __ \        /  \           _       
+#   | |   `. \ /  .--.  \   | |__) |       / /\ \           | |   `. \  /  .--.  \   | |__) |      / /\ \         | |      
+#   | |    | | | |    | |   |  __ /       / ____ \          | |    | |  | |    | |   |  __ /      / ____ \        | |      
+#  _| |___.' / \  `--'  /  _| |  \ \_   _/ /    \ \_       _| |___.' /  \  `--'  /  _| |  \ \_  _/ /    \ \_      | |      
+# |________.'   `.____.'  |____| |___| |____|  |____|     |________.'    `.____.'  |____| |___||____|  |____|     |_|      
+#                                                                                                                 (_)      
+# """.strip()
 INTRO_TEXT = """
-.________       ____     _______           __            ________        ____     _______          __                    
-|_   ___ `.   .'    `.  |_   __ \         /  \          |_   ___ `.    .'    `.  |_   __ \        /  \           _       
-  | |   `. \ /  .--.  \   | |__) |       / /\ \           | |   `. \  /  .--.  \   | |__) |      / /\ \         | |      
-  | |    | | | |    | |   |  __ /       / ____ \          | |    | |  | |    | |   |  __ /      / ____ \        | |      
- _| |___.' / \  `--'  /  _| |  \ \_   _/ /    \ \_       _| |___.' /  \  `--'  /  _| |  \ \_  _/ /    \ \_      | |      
-|________.'   `.____.'  |____| |___| |____|  |____|     |________.'    `.____.'  |____| |___||____|  |____|     |_|      
-                                                                                                                (_)      
+._   _  __   __ __    __
+| \ | | \ \ / / \ \  / /
+|  \| |  \ V /   \ \/ / 
+| |\  |   | |    / /\ \  
+|_| \_|   |_|   /_/  \_\     
 """.strip()
 
 os.system('clear')
@@ -49,7 +56,8 @@ def get_prompt():
 
 def greet():
     print(INTRO_TEXT)
-    print('[esc+enter]: submit the prompt | [enter]: enter a new line')
+    print()
+    print('[esc+enter]: submit the prompt\n[enter]:     enter a new line\n')
 greet()
 
 llm = GroqAI()
@@ -58,8 +66,8 @@ messages = [
     {
         'role': 'system',
         'content': """
-        You are an helpful assistant named mini-dora, that runs on a CLI. Your name comes from a character in doremon, the mini-doremon (3 mini versions of doremon).
-        You respond to users in a short and concise way, and you responses should be formated in a way that should be clearly visible on cli
+        You are an helpful screen-aware CLI agent named nyx.
+        You respond to users in a short, concise and informative way, and you responses should be formated in a way that should be clearly visible on cli.
         """
     }
 ]
